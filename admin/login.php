@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
        //Nastavení ID uživatele
        $_SESSION["logged_in_user_id"] = $id;
 
-       Url::redirectUrl ("/kupchleba/shop-list.php");
+       Url::redirectUrl ("/kupchleba/admin/user-list.php");
     } else {
         //Neúspěšné přihlášení
         $error = "chyba při přihlášení";

@@ -9,7 +9,7 @@ class Auth {
  * @return boolean true pokud je uživatel přihlášený, jinak false
  */
 public static function isLoggedIn() {
-    return isset ($_SESSION["is_logged_in"]) and
+    return isset($_SESSION["is_logged_in"]) and
     $_SESSION["is_logged_in"];
     }
 }

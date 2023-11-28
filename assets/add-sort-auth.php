@@ -4,9 +4,15 @@ require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/Sort.php";
 require "../classes/User.php";
+require "../classes/Auth.php";
 
+session_start();
 
+if (!Auth::isLoggedIn()) {
+    die("Nepovolený přístup");
+}
 
+$user_id = $_SESSION["logged_in_user_id"];
 
 if($_SERVER["REQUEST_METHOD"] === "POST") {
    
@@ -14,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $connection = $database->connectionDB();
         
 
-        $user_id = $_POST["user_id"];
+        
         $shop = $_POST["shop"];
         $department = $_POST["department"];
         $sort = $_POST["sort"];
@@ -25,16 +31,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $comment = $_POST["comment"];
 
         
-        $return = Sort::createSort($connection, $user_id, $shop, $department,
+        Sort::createSort($connection, $user_id, $shop, $department,
         $sort, $quantity, $units, $price_selection, $value, $comment);
     
-        if(empty($return)) {
-            
-    
-            Url::redirectUrl ("/kupchleba/shop-list.php");
+            Url::redirectUrl ("/kupchleba/admin/user-list.php");
         } else {
             echo "Položku se nepodařilo přidat";
         }
     
-    }        
+          
     

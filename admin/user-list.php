@@ -1,17 +1,21 @@
 <?php
 
-require "classes/Database.php";
-require "classes/Sort.php";
-require "classes/Shop.php";
+require "../classes/Database.php";
+require "../classes/Sort.php";
+require "../classes/Shop.php";
+require "../classes/Auth.php";
 
+session_start();
 
-require "assets/session-reg.php";
+if (!Auth::isLoggedIn()) {
+    die("Nepovolený přístup");
+}
 
-$user_id = $_SESSION['code'];
+$user_id = $_SESSION["logged_in_user_id"];
+var_dump ($user_id);
 
 $database = new Database();
 $connection = $database->connectionDB();
-
 
 $allsort= Sort::getUserSort($connection, $user_id, "shop, department, sort, quantity, units, price_selection, value, comment");
 $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
@@ -34,9 +38,10 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
     <title>Document</title>
 </head>
 <body>
+    <a href="log-out.php">Odhlásit</a>
     <h1>Můj nákupní seznam</h1>
 
-    <?php require "assets/shop-form.php";?>
+   <?php require "../assets/shop-form-auth.php"; ?>
 
 <section class="shop-list">
     <?php if(empty($sorted_array)):?>

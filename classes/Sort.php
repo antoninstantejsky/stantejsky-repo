@@ -43,21 +43,23 @@ public static function createSort($connection, $user_id, $shop, $department,
                 }
         }
 }
-/**
- * Vrátí všechny žáky z databáze
+
+       
+ /*** Vrátí všechny žáky z databáze
  * 
  * @param object $connection - připojení do databáze
  * 
  * @return array pole objektů, kde každý objekt je jeden údaj o položce
  * 
  */
-public static function getAllSort($connection, $columns = "*"){
+public static function getUserSort($connection,$user_id, $columns = "*"){
     $sql = "SELECT $columns 
             FROM shoplist
+            WHERE user_id = :user_id
             ORDER BY department ASC";
        
     $stmt = $connection->prepare($sql);
-    
+    $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
     
     try{
         if ($stmt->execute()) {
@@ -70,5 +72,26 @@ public static function getAllSort($connection, $columns = "*"){
         echo "Typ chyby: " . $e->getMessage();
             }
         }   
+    /**
+     * Získá jednoho žáka z databází
+     * 
+     * @param object $connection napojení na databázi
+     
+     * 
+     * @return 
+     * */
+    public static function deleteSort($connection, $user_id) {
+    
+        $sql = "DELETE
+            FROM shoplist
+            WHERE user_id = :user_id";
+            
+    
+        $stmt = $connection->prepare($sql);
+        $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+        $stmt->execute();
 
+
+        return true;
 }
+    }
