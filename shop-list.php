@@ -7,11 +7,15 @@ require "classes/Shop.php";
 
 require "assets/session-reg.php";
 
+
 $user_id = $_SESSION['code'];
 
 $database = new Database();
 $connection = $database->connectionDB();
 
+
+if (empty($_SESSION['code']) || time() - $_SESSION['code_time'] > 200)
+regenerate();
 
 $allsort= Sort::getUserSort($connection, $user_id, "shop, department, sort, quantity, units, price_selection, value, comment");
 $allshop= Shop::getUserShop($connection, $user_id, "shop_name");

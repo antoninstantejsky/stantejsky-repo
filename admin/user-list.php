@@ -17,7 +17,7 @@ var_dump ($user_id);
 $database = new Database();
 $connection = $database->connectionDB();
 
-$allsort= Sort::getUserSort($connection, $user_id, "shop, department, sort, quantity, units, price_selection, value, comment");
+$allsort= Sort::getUserSort($connection, $user_id, "shop, department, id, sort, quantity, units, price_selection, value, comment");
 $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
 
  
@@ -39,6 +39,7 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
 </head>
 <body>
     <a href="log-out.php">Odhlásit</a>
+    <a href="favourite-list.php">Oblíbené položky</a>
     <h1>Můj nákupní seznam</h1>
 
    <?php require "../assets/shop-form-auth.php"; ?>
@@ -62,7 +63,8 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
                     ($one_sort["price_selection"])." ".
                     ($one_sort["value"]) ."Kč". " ". 
                     ($one_sort["comment"]);
-                    ?></p>
+                    ?>
+                    <a href="add-favourite.php?id=<?=$one_sort['id'] ?>">oblíbené</a>
                 <?php endforeach;?>
             <?php endforeach;?>
             <?php endforeach;?>
