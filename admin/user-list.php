@@ -17,10 +17,9 @@ var_dump ($user_id);
 $database = new Database();
 $connection = $database->connectionDB();
 
-$allsort= Sort::getUserSort($connection, $user_id, "shop, department, id, sort, quantity, units, price_selection, value, comment");
+$allsort= Sort::getUserSort($connection, $user_id, "favourite, shop, department, id, sort, quantity, units, price_selection, value, comment");
 $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
 
- 
  $sorted_array=[]; 
  foreach ($allsort as $one_sort) {
     $sorted_array[$one_sort['shop']][$one_sort['department']][]=$one_sort;
@@ -59,12 +58,17 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
                     echo
                     ($one_sort["sort"])." ". 
                     ($one_sort["quantity"])." ". 
-                    ($one_sort["units"])." ".
-                    ($one_sort["price_selection"])." ".
-                    ($one_sort["value"]) ."Kč". " ". 
+                    ($one_sort["units"]);
+                    if (!empty($one_sort["price_selection"]))
+                    { echo
+                        ($one_sort["price_selection"])." ".
+                        ($one_sort["value"]) ."Kč";
+                    }
+                     echo
                     ($one_sort["comment"]);
                     ?>
                     <a href="add-favourite.php?id=<?=$one_sort['id'] ?>">oblíbené</a>
+                    <a href="delete-sort.php?id=<?=$one_sort['id']?>?favourite=<?=$one_sort['favourite']?>">smazat</a>
                 <?php endforeach;?>
             <?php endforeach;?>
             <?php endforeach;?>

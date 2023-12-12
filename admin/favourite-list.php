@@ -16,7 +16,7 @@ var_dump ($user_id);
 $database = new Database();
 $connection = $database->connectionDB();
 
-$fav_sort=Sort::getFavouriteSort($connection,$user_id, "shop, department, id, sort, quantity, units, price_selection, value, comment");
+$fav_sort=Sort::getFavouriteSort($connection,$user_id, "favourite, shop, department, id, sort, quantity, units, price_selection, value, comment");
 
 $sorted_array=[]; 
  foreach ($fav_sort as $one_sort) {
@@ -43,7 +43,7 @@ $sorted_array=[];
     <div class="all-fav-list">
         <div class="one-sort">
                 <?php foreach($sorted_array as $key=>$obchody): ?>
-                <h2><?php echo "$key"?></h2>
+                <a href="fav-shop-list.php?shop=<?=$key ?>"><h2><?php echo "$key"?></h2></a>
                 <?php foreach($obchody as $one_sort): ?>
                    <p><?php 
                     echo
@@ -51,6 +51,7 @@ $sorted_array=[];
                     ($one_sort["quantity"])." ". 
                     ($one_sort["units"]);
                     ?>
+                   <a href="delete-sort.php?id=<?=$one_sort['id']?>?favourite=<?=$one_sort['favourite']?>">smazat</a>
                 <?php endforeach;?>
             <?php endforeach;?>
             
