@@ -51,7 +51,7 @@ $sorted_array=[];
                     ($one_sort["quantity"])." ". 
                     ($one_sort["units"]);
                     ?>
-                   <a href="delete-sort.php?id=<?=$one_sort['id']?>?favourite=<?=$one_sort['favourite']?>">smazat</a>
+                     <a href="delete-sort.php?id=<?=$one_sort['id']?>&favourite=<?=$one_sort['favourite']?>">smazat</a>
                 <?php endforeach;?>
             <?php endforeach;?>
             

@@ -34,6 +34,8 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/general.css">
+    <link rel="stylesheet" href="./css/user-list.css">
     <title>Document</title>
 </head>
 <body>
@@ -58,7 +60,7 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
                     echo
                     ($one_sort["sort"])." ". 
                     ($one_sort["quantity"])." ". 
-                    ($one_sort["units"]);
+                    ($one_sort["units"])." ";
                     if (!empty($one_sort["price_selection"]))
                     { echo
                         ($one_sort["price_selection"])." ".
@@ -68,7 +70,7 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
                     ($one_sort["comment"]);
                     ?>
                     <a href="add-favourite.php?id=<?=$one_sort['id'] ?>">oblíbené</a>
-                    <a href="delete-sort.php?id=<?=$one_sort['id']?>?favourite=<?=$one_sort['favourite']?>">smazat</a>
+                    <a href="delete-sort.php?id=<?=$one_sort['id']?>&favourite=<?=$one_sort['favourite']?>">smazat</a>
                 <?php endforeach;?>
             <?php endforeach;?>
             <?php endforeach;?>

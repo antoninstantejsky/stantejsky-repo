@@ -6,7 +6,8 @@ class Shop {
 * Přidání obchodu do databáze
 *
 * @param object $connection - připojení do databáze
-
+* @param object $user_id - uživatelské id
+* @param object $shop_name - název obchodu
 * 
 * @return void
 */
@@ -38,12 +39,12 @@ public static function createShop($connection, $user_id, $shop_name) {
     }
     
     /**
-     * Získá jednoho žáka z databází
+     * Získá všechny obchody přihlášeného uživatele
      * 
      * @param object $connection napojení na databázi
-     
+     * @param object $user_id - uživatelské id
      * 
-     * @return 
+     * @return array pole objektů, kde každý objekt je jeden obchod
      * */
     public static function getUserShop($connection, $user_id, $columns = "*") {
     
@@ -62,7 +63,7 @@ public static function createShop($connection, $user_id, $shop_name) {
 }
 
  /**
-     * Získá jednoho žáka z databází
+     * Smaže vybraný obchod uživatele
      * 
      * @param object $connection napojení na databázi
      

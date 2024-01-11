@@ -14,10 +14,9 @@ if (!Auth::isLoggedIn()) {
         $database = new Database();
         $connection = $database->connectionDB();
    
-    if (isset($_GET['id']) ){
+   
         
-      Sort::updateFavouriteSort($connection, $_GET['id']); 
-    } 
+      Sort::updateFavouriteSort($connection,$_SESSION["logged_in_user_id"], $_GET['id']); 
    
     
             Url::redirectUrl ("/kupchleba/admin/user-list.php");
