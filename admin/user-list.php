@@ -34,29 +34,40 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/general.css">
-    <link rel="stylesheet" href="./css/user-list.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/user-list.css">
     <title>Document</title>
 </head>
 <body>
-    <a href="log-out.php">Odhlásit</a>
-    <a href="favourite-list.php">Oblíbené položky</a>
-    <h1>Můj nákupní seznam</h1>
+    <header>
+        <a href="log-out.php">Odhlásit</a>
+        <a href="favourite-list.php">Oblíbené položky</a>
+    </header>
 
-   <?php require "../assets/shop-form-auth.php"; ?>
+<main>
+        <h1>Můj nákupní seznam</h1>
 
-<section class="shop-list">
+<div class="full-list">
+    <?php require "../assets/shop-form-auth.php"; ?>
+
+    <section class="shop-list">
     <?php if(empty($sorted_array)):?>
         <p>nákupní seznam je prázdný</p>
-<?php else: ?>
+    <?php else: ?>
     <div class="all-sort-list">
-        <div class="one-sort">
+        <div class="all-shops">
                 <?php foreach($sorted_array as $key=>$obchody): ?>
-                <h2><?php echo "$key"?></2>
+                    <h2><?php echo "$key"?></h2>
+         
+         <div class="one-shop">
+
+        
+               
                 <?php foreach($obchody as $key=>$oddeleni): ?>
                 <h3><?php echo "$key"?></h3>
+               
                 <?php foreach($oddeleni as $one_sort): ?>
-                   <p><?php 
+                    <p><?php 
                     echo
                     ($one_sort["sort"])." ". 
                     ($one_sort["quantity"])." ". 
@@ -66,21 +77,32 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
                         ($one_sort["price_selection"])." ".
                         ($one_sort["value"]) ."Kč";
                     }
-                     echo
+                    echo
                     ($one_sort["comment"]);
                     ?>
                     <a href="add-favourite.php?id=<?=$one_sort['id'] ?>">oblíbené</a>
                     <a href="delete-sort.php?id=<?=$one_sort['id']?>&favourite=<?=$one_sort['favourite']?>">smazat</a>
                 <?php endforeach;?>
+                
             <?php endforeach;?>
+            </div>
             <?php endforeach;?>
+         
             
-           
-            
-        </div>   
-    </div>
-    <?php endif ?>   
-</section>
+        <?php endif ?>   
+        
+        </div> 
+        </div> 
+        </section>
+</div>
+   
+    </main>
+
+    <footer>
+
+    </footer>
+    
+   
    
 </body>
 </html>
