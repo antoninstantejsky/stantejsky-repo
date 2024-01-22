@@ -1,0 +1,35 @@
+[33mcommit 050322ac859d37f4094ecb3e76051c69bd3c2003[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Antonín Štantejský <astantejsky@gmail.com>
+Date:   Sat Jan 20 13:25:11 2024 +0100
+
+    project před plněním úkolu č.1
+
+[33mcommit 4559d704bcb939688d07159b9a297f8ed4679f1e[m
+Author: Antonín Štantejský <astantejsky@gmail.com>
+Date:   Thu Jan 11 20:39:28 2024 +0100
+
+    doděláno mazání položek přihlášeného uživatele
+
+[33mcommit cab0c0040080eecee4a7f4399fe38ed1122fdfa8[m
+Author: Antonín Štantejský <astantejsky@gmail.com>
+Date:   Tue Dec 12 21:47:36 2023 +0100
+
+    před doděláním vypisování položek
+
+[33mcommit b9e4d3552abaa63e6db18000bf5a50074ed0925c[m
+Author: Antonín Štantejský <astantejsky@gmail.com>
+Date:   Sat Dec 2 20:45:45 2023 +0100
+
+    vytvořen seznam oblíbených položek uživatele
+
+[33mcommit 21f5f0eeca9d43c602d44a684b4533fc41abe4d0[m
+Author: Antonín Štantejský <astantejsky@gmail.com>
+Date:   Tue Nov 28 20:59:36 2023 +0100
+
+    rozdeleno na jednoraz. a prihl. sekci, pred deletem zbozi
+
+[33mcommit 974847f5a5c631d4eff4a84f2a89ac7a02654a92[m
+Author: Antonín Štantejský <astantejsky@gmail.com>
+Date:   Mon Nov 6 21:39:26 2023 +0100
+
+    příprava jádra projektu

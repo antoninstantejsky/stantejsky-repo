@@ -6,6 +6,9 @@ class Database {
         $db_name = "kupchleba";
         $db_user = "antoninstantejsky";
         $db_password = "antoninstantejsky";
+        if (file_exists("localstmt.php")){
+            require_once "localstmt.php";
+        }
 
         $connection = "mysql:host=" . $db_host . ";dbname=" . $db_name . ";charset=utf8";
 

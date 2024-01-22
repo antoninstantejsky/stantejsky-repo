@@ -3,6 +3,7 @@
 require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/User.php";
+require "../classes/Tables.php";
 
 session_start();
 
@@ -13,6 +14,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         // $connection = connectionDB();
         $database = new Database();
         $connection = $database->connectionDB();
+        Tables::createTableUser($connection);
 
         $first_name = $_POST["first_name"];
         $second_name = $_POST["second_name"];

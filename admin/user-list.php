@@ -4,6 +4,8 @@ require "../classes/Database.php";
 require "../classes/Sort.php";
 require "../classes/Shop.php";
 require "../classes/Auth.php";
+require "../classes/Tables.php";
+
 
 session_start();
 
@@ -16,6 +18,8 @@ var_dump ($user_id);
 
 $database = new Database();
 $connection = $database->connectionDB();
+Tables::createTableSort($connection);
+Tables::createTableAddshop($connection);
 
 $allsort= Sort::getUserSort($connection, $user_id, "favourite, shop, department, id, sort, quantity, units, price_selection, value, comment");
 $allshop= Shop::getUserShop($connection, $user_id, "shop_name");

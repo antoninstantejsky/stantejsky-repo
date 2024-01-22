@@ -3,19 +3,22 @@
 require "classes/Database.php";
 require "classes/Sort.php";
 require "classes/Shop.php";
+require "classes/User.php";
 
+session_start();
 
-require "assets/session-reg.php";
-
-
-$user_id = $_SESSION['code'];
 
 $database = new Database();
 $connection = $database->connectionDB();
 
+$first_name = "";
+$second_name = "";
+$email = uniqid()."@".uniqid().".cz";
+$password = "";
 
-if (empty($_SESSION['code']) || time() - $_SESSION['code_time'] > 200)
-regenerate();
+User::createUser($connection, $first_name, $second_name, $email, $password);
+$user_id= User::getUserId($connection, $email);
+echo $user_id;
 
 $allsort= Sort::getUserSort($connection, $user_id, "shop, department, sort, quantity, units, price_selection, value, comment");
 $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
