@@ -3,24 +3,13 @@
 require "classes/Database.php";
 require "classes/Sort.php";
 require "classes/Shop.php";
-require "classes/User.php";
 
 session_start();
-
-
 $database = new Database();
 $connection = $database->connectionDB();
-
-$first_name = "";
-$second_name = "";
-$email = uniqid()."@".uniqid().".cz";
-$password = "";
-
-User::createUser($connection, $first_name, $second_name, $email, $password);
-$user_id= User::getUserId($connection, $email);
+$user_id=$_SESSION["user_id"];
 echo $user_id;
-
-$allsort= Sort::getUserSort($connection, $user_id, "shop, department, sort, quantity, units, price_selection, value, comment");
+$allsort= Sort::getUserSort($connection, $user_id, "shop, department,id, sort, quantity, units, price_selection, value, comment");
 $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
 
  
@@ -51,20 +40,31 @@ $allshop= Shop::getUserShop($connection, $user_id, "shop_name");
 <?php else: ?>
     <div class="all-sort-list">
         <div class="one-sort">
-                <?php foreach($sorted_array as $key=>$obchody): ?>
-                <h2><?php echo "$key"?></2>
+        <?php foreach($sorted_array as $key=>$obchody): ?>
+                    <h2><?php echo "$key"?></h2>
+         
+         <div class="one-shop">
+
+        
+               
                 <?php foreach($obchody as $key=>$oddeleni): ?>
                 <h3><?php echo "$key"?></h3>
+               
                 <?php foreach($oddeleni as $one_sort): ?>
-                   <p><?php 
+                    <p><?php 
                     echo
                     ($one_sort["sort"])." ". 
                     ($one_sort["quantity"])." ". 
-                    ($one_sort["units"])." ".
-                    ($one_sort["price_selection"])." ".
-                    ($one_sort["value"]) ."Kč". " ". 
+                    ($one_sort["units"])." ";
+                    if (!empty($one_sort["price_selection"]))
+                    { echo
+                        ($one_sort["price_selection"])." ".
+                        ($one_sort["value"]) ."Kč";
+                    }
+                    echo
                     ($one_sort["comment"]);
-                    ?></p>
+                    ?>
+                    <a href="admin/delete-sort.php?id=<?=$one_sort['id']?>">smazat</a>
                 <?php endforeach;?>
             <?php endforeach;?>
             <?php endforeach;?>

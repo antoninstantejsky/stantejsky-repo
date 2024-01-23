@@ -18,7 +18,7 @@
                 <input class="btn" type="submit" value="Přihlásit se">
             </form>
         </section>
-        <a href="shop-list.php">Chci jednorázově vytvořit nákupní seznam</a>
+        <a href="unreg_user.php">Chci jednorázově vytvořit nákupní seznam</a>
     </main>
 </body>
 </html>

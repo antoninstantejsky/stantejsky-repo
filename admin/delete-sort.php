@@ -31,6 +31,9 @@ if (!Auth::isLoggedIn()) {
             Sort::deleteSort($connection, $_GET['id']);
             Url::redirectUrl ("/kupchleba/admin/favourite-list.php");
         }
+    } else {
+         Sort::deleteSort($connection, $_GET['id']);
+            Url::redirectUrl ("/kupchleba/shop-list.php");
     }
        
      
