@@ -2,8 +2,8 @@
 
 class Database {
     public function connectionDB() {
-        $db_host = "kocicka.endora.cz"; 
-        $db_name = "kupchl1706214480";
+        $db_host = "localhost"; 
+        $db_name = "kupchleba4fancz";
         $db_user = "kupchleba4fancz";
         $db_password = "kupchl1706214480";
         if (file_exists("localstmt.php")){

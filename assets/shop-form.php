@@ -42,7 +42,7 @@
             <option value="bal">bal</option>
         </select><br>
         <select name="price_selection">
-            <option value="null">Prázdný</option>
+            <option value="">Prázdný</option>
             <option value="cena">Cena</option>
             <option value="max. cena">Cena max</option>
         </select>
