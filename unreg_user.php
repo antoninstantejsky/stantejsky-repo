@@ -9,7 +9,6 @@ session_start();
 
         $database = new Database();
         $connection = $database->connectionDB();
-        Tables::createTableUser($connection);
 
         $first_name = "";
         $second_name = "";

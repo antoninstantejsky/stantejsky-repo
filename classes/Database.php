@@ -2,13 +2,13 @@
 
 class Database {
     public function connectionDB() {
-        $db_host = "kocicka.endora.cz"; 
-        $db_name = "kupchl1706214480";
-        $db_user = "kupchleba4fancz";
-        $db_password = "kupchl1706214480";
-        if (file_exists("localstmt.php")){
-            require_once "localstmt.php";
-        }
+        $db_host = "localhost"; 
+        $db_name = "kupchleba";
+        $db_user = "antoninstantejsky";
+        $db_password = "antoninstantejsky";
+        // if (file_exists("localstmt.php")){
+        //     require_once "localstmt.php";
+        // }
 
         $connection = "mysql:host=" . $db_host . ";dbname=" . $db_name . ";charset=utf8";
 

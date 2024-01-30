@@ -1,5 +1,7 @@
 <?php
-
+require "classes/Database.php";
+$database = new Database();
+$connection = $database->connectionDB();
 class Tables {
 
     public static function createTableUser($connection) {
@@ -12,6 +14,7 @@ class Tables {
             PRIMARY KEY (id))";
     
     $stmt = $connection->prepare($sql);
+    $stmt->execute();
     }
 
     public static function createTableSort($connection) {
@@ -31,6 +34,7 @@ class Tables {
             
     
     $stmt = $connection->prepare($sql);
+    $stmt->execute();
     } 
 
     public static function createTableAddshop($connection) {
@@ -42,5 +46,11 @@ class Tables {
             
     
     $stmt = $connection->prepare($sql);
+    $stmt->execute();
     } 
 }
+
+
+Tables::createTableUser($connection);
+Tables::createTableSort($connection);
+Tables::createTableAddshop($connection);
